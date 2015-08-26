@@ -41,6 +41,21 @@ class AppTest extends Specification with Mockito{
     }
   }
 
+  "'dealWithNewString('Hello', 'World')" should {
+    "return 'Hello, World'" in {
+      import com.thoughtworks.sancoder.scala.StringUtil._
+      dealWithNewString("Hello", "World") === "Hello, World"
+    }
+  }
+  "'dealWithNewString2(implicit 'Hello', 'World')" should {
+    "return 'Hello, World'" in {
+      import com.thoughtworks.sancoder.scala.StringUtil._
+
+      implicit val strs : Array[String] = Array("Hello", "World")
+      dealWithNewString2 === "Hello, World"
+    }
+  }
+
   "'Hello'.+++('World')" should {
     "= 'Hello, World'" in {
       import com.thoughtworks.sancoder.scala.StringUtil._

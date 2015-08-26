@@ -7,5 +7,7 @@ object MyApp extends App {
   val welcomeStr: String = "Hello"
   var welcomeStr2: String = "World"
   welcomeStr2 = "World"
-  println(welcomeStr +++ welcomeStr2)
+//  println(welcomeStr +++ welcomeStr2)
+  implicit val strs : Array[String] = Array("Hello", "World")
+  println(dealWithNewString2)
 }

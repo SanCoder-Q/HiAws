@@ -7,18 +7,26 @@ object StringUtil {
       case nextStr => str + ", " + nextStr
     }
 
-    def ++++(nextStr : String) = {
+    def ++++(nextStr : String) : String = {
       str + ", " + nextStr
     }
   }
 
   class NewString(val str : String) {
-    def +++++(nextStr: String) = {
+    def +++++(nextStr: String) : String = {
       str + ", " + nextStr
     }
   }
 
   implicit def stringWrapper(str : String): NewString = {
     new NewString(str)
+  }
+
+  def dealWithNewString(newStr : NewString, nextStr : String) : String = {
+    newStr +++++ nextStr
+  }
+
+  def dealWithNewString2(implicit newStrs : Array[String]) = {
+    newStrs.reduce((str1, str2) => str1 + ", " + str2)
   }
 }
