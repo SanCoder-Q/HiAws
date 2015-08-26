@@ -2,7 +2,7 @@ package com.thoughtworks.sancoder.scala.test
 
 import java.io.ByteArrayOutputStream
 
-import com.thoughtworks.sancoder.scala.App
+import com.thoughtworks.sancoder.scala.MyApp
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification
 
@@ -14,7 +14,7 @@ class AppTest extends Specification with Mockito{
   "main in App" should {
     "output 'Hello, World'" in {
       Console.withOut(stream) {
-        App.main(Array())
+        MyApp.main(Array())
         stream.toString() equals("Hello, World\n")
       }
     }
@@ -24,6 +24,27 @@ class AppTest extends Specification with Mockito{
     "= 'Hello, World'" in {
       import com.thoughtworks.sancoder.scala.StringUtil._
       "Hello" +++ "World" === "Hello, World"
+    }
+  }
+
+  "'Hello'++++'World'" should {
+    "= 'Hello, World'" in {
+      import com.thoughtworks.sancoder.scala.StringUtil._
+      "Hello" ++++ "World" === "Hello, World"
+    }
+  }
+
+  "'Hello'+++++'World'" should {
+    "= 'Hello, World'" in {
+      import com.thoughtworks.sancoder.scala.StringUtil._
+      "Hello" +++++ "World" === "Hello, World"
+    }
+  }
+
+  "'Hello'.+++('World')" should {
+    "= 'Hello, World'" in {
+      import com.thoughtworks.sancoder.scala.StringUtil._
+      "Hello".+++("World") === "Hello, World"
     }
   }
 
