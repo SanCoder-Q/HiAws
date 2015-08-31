@@ -47,6 +47,7 @@ class AppTest extends Specification with Mockito{
       dealWithNewString("Hello", "World") === "Hello, World"
     }
   }
+
   "'dealWithNewString2(implicit 'Hello', 'World')" should {
     "return 'Hello, World'" in {
       import com.thoughtworks.sancoder.scala.StringUtil._
@@ -62,6 +63,4 @@ class AppTest extends Specification with Mockito{
       "Hello".+++("World") === "Hello, World"
     }
   }
-
-
 }

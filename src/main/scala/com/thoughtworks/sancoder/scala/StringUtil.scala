@@ -4,7 +4,7 @@ package com.thoughtworks.sancoder.scala
 object StringUtil {
   implicit class operator(str : String) {
     val +++ : String => String = {
-      case nextStr => str + ", " + nextStr
+      str + ", " + _
     }
 
     def ++++(nextStr : String) : String = {
@@ -27,6 +27,6 @@ object StringUtil {
   }
 
   def dealWithNewString2(implicit newStrs : Array[String]) = {
-    newStrs.reduce((str1, str2) => str1 + ", " + str2)
+    newStrs.reduce(_ + ", " + _)
   }
 }
