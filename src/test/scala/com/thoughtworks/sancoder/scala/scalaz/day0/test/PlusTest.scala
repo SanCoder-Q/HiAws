@@ -18,6 +18,7 @@ class PlusTest extends Specification with Mockito {
 
       plus(1, 2) == 3
     }
+
   }
 
 }

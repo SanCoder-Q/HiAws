@@ -26,3 +26,7 @@ lazy val root = (project in file(".")).
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 
 initialCommands in console := "import scalaz._, Scalaz._"
+
+logLevel in run := Level.Warn
+
+logLevel in test := Level.Warn
