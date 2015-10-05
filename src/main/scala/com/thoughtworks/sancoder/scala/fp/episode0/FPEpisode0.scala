@@ -3,7 +3,7 @@ package com.thoughtworks.sancoder.scala.fp.episode0
 import scala.annotation.tailrec
 
 //Created by SanCoder on 10/2/15.
-object Episode0 {
+object FPEpisode0 {
 
   def fib(n: Int): Int = {
     @tailrec

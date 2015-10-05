@@ -4,7 +4,7 @@ import org.specs2.mutable.Specification
 
 //Created by SanCoder on 10/2/15.
 class Episode0AppTest extends Specification{
-  import Episode0._
+  import FPEpisode0._
   "fib" should {
     "return the specify Fibonacci number" in{
       fib(0) === 0
