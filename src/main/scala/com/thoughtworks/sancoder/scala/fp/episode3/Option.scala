@@ -5,6 +5,11 @@ import scala.{Option => _, Some => _, None => _}
 //Created by SanCoder on 10/5/15.
 trait Option[+A] {
 
+  def isEmpty: Boolean = this match {
+    case Some(_) => false
+    case None => true
+  }
+
   def map[B] = Option.map[A, B](this) _
 
   def flatMap[B] = Option.flatMap[A, B](this) _

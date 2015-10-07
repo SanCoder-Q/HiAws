@@ -3,6 +3,8 @@ package com.thoughtworks.sancoder.scala.scalaz.day0.test
 import org.specs2.mutable.Specification
 import org.specs2.mock.Mockito
 
+import scalaz._, Scalaz._
+
 //Created by SanCoder on 8/31/15.
 class PlusTest extends Specification with Mockito {
 
@@ -18,7 +20,33 @@ class PlusTest extends Specification with Mockito {
 
       plus(1, 2) == 3
     }
+  }
 
+  "validation" should {
+    "do something" in {
+      val ss = "1a"::"100"::"-100"::Nil
+
+      implicit val em = new Monoid[NumberFormatException] {
+        override def zero: NumberFormatException = new NumberFormatException()
+
+        override def append(f1: NumberFormatException, f2: => NumberFormatException): NumberFormatException = {
+          new NumberFormatException(f1.getMessage + "," + f2.getMessage)
+        }
+      }
+
+      def validate(str: String) = {
+        str.parseInt.filter(_ > 0)
+      }
+
+
+      ss.map(validate).map{
+        case Success(i) => println("::" + i)
+        case Failure(e) => println("::" + e.getMessage)
+      }
+
+      1 == 1
+
+    }
   }
 
 }
